@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動画スピード変換ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 動画スピード変換ツール</h1>
+            <p>動画ファイルのスピードを簡単に変更できます</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <p>動画ファイルをドラッグ&ドロップするか、クリックして選択</p>
+                        <p class="file-types">対応形式: MP4, AVI, MOV, WebM, MKV</p>
+                        <input type="file" id="videoInput" accept="video/*" hidden>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-section" id="controlsSection" style="display: none;">
+                <div class="video-preview">
+                    <video id="previewVideo" controls></video>
+                    <div class="video-info">
+                        <span id="videoFileName"></span>
+                        <span id="videoDuration"></span>
+                    </div>
+                </div>
+
+                <div class="speed-controls">
+                    <h3>スピード設定</h3>
+                    <div class="speed-slider-container">
+                        <input type="range" id="speedSlider" min="25" max="400" value="100" step="25">
+                        <div class="speed-labels">
+                            <span>0.25x</span>
+                            <span>1x</span>
+                            <span>2x</span>
+                            <span>4x</span>
+                        </div>
+                    </div>
+                    <div class="speed-display">
+                        現在のスピード: <span id="speedValue">1.0x</span>
+                    </div>
+                    
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-speed="50">0.5x (スロー)</button>
+                        <button class="preset-btn" data-speed="100">1.0x (通常)</button>
+                        <button class="preset-btn" data-speed="150">1.5x (高速)</button>
+                        <button class="preset-btn" data-speed="200">2.0x (倍速)</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="previewBtn" class="btn btn-secondary">プレビュー</button>
+                    <button id="convertBtn" class="btn btn-primary">変換してダウンロード</button>
+                    <button id="resetBtn" class="btn btn-outline">リセット</button>
+                </div>
+
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="progressText">変換中...</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 動画スピード変換ツール - ブラウザ上で簡単に動画スピードを変更</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
